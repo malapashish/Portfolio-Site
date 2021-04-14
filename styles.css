@@ -4,109 +4,309 @@
   box-sizing: border-box;
 }
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-.header {
-  border-bottom: 1px solid #e2e8f0;
+/***************************************************Navigation Bar*********************************************************/
+@font-face {
+  font-family: holo;
+  src: url(ROCK.TTF);
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 15rem;
+  overflow: hidden;
   background-color: #8f34ce;
+  padding: 10px 150px;
 }
 
-.hamburger {
-  display: none;
-}
-
-.bar {
+.navbar a {
+  float: left;
   display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: #101010;
-}
-
-.nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-item {
-  margin-left: 5rem;
-}
-
-.nav-link {
-  font-size: 1.6rem;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
   font-weight: 400;
-  color: #ffffff;
-  font-family: "Noto Sans", sans-serif;
-  padding: 10px;
-  border-radius: 10px;
+  font-size: 30px;
+  font-family: holo;
 }
 
-.nav-link:hover {
-  background-color: #73ce34;
-}
-
-.nav-logo {
-  font-size: 2.1rem;
-  font-weight: 500;
-  color: #ffffff;
-  font-family: "Noto Sans", sans-serif;
+.navbar a.right {
+  float: right;
+  font-size: 25px;
+  font-family: holo;
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 5rem;
-    flex-direction: column;
-    background-color: #8f34ce;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-  }
-
   .navbar {
-    padding: 1rem 1.5rem;
+    float: none;
+    width: 100%;
+    padding: 5px 10px;
   }
 
-  .nav-menu.active {
-    left: 0;
+  .navbar a {
+    font-size: 20px;
   }
 
-  .nav-item {
-    margin: 2.5rem 0;
+  .navbar a.right {
+    font-size: 15px;
+  }
+}
+
+/******************************************************Header image******************************************************/
+.header {
+  padding: 200px;
+  text-align: center;
+  background: linear-gradient(
+    77.32deg,
+    #30d0e0 15.47%,
+    rgba(13, 157, 171, 0.86) 73.84%
+  );
+  color: white;
+}
+
+@font-face {
+  font-family: rockWell;
+  src: url(ROCK.TTF);
+}
+
+.header {
+  font-family: rockWell;
+  font-weight: 400;
+}
+
+.header p {
+  color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    font-size: 15px;
+    padding: 80px;
+  }
+}
+/****************************************Card Section**************************************************************/
+
+.card_section {
+  background-color: #34ce8f;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.first_card {
+  z-index: 1;
+  margin-top: -60px;
+}
+
+.second_card {
+  z-index: 1;
+  margin-top: -60px;
+}
+
+.third_card {
+  z-index: 1;
+  margin-top: -60px;
+}
+
+/* .card {
+  margin-top: -120px;
+  z-index: 9;
+  background-color: #ffffff;
+  height: 320px;
+  width: 200px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+} */
+
+.card {
+  background-color: #ffffff;
+  height: 320px;
+  width: 20%;
+  border-radius: 15px;
+  padding: 20px;
+  transition: 0.3s;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info h5 {
+  font-family: rockWell;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+}
+
+.info p {
+  font-family: rockWell;
+  text-align: center;
+}
+
+.project_button {
+  font-family: rockWell;
+  width: 150px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  border-color: #3473ce;
+  transition-duration: 0.4s;
+}
+
+.project_button:hover {
+  background-color: #8f34ce;
+  color: #ffffff;
+}
+
+.card_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  width: 100px;
+  height: 80.7px;
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: 100%;
   }
 
-  .hamburger {
-    display: block;
-    cursor: pointer;
-  }
-  .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
+  .card {
+    width: 80%;
   }
 
-  .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  .second_card {
+    z-index: 0;
+    margin-top: 0px;
   }
 
-  .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+  .third_card {
+    z-index: 0;
+    margin-top: 0px;
   }
+}
+
+/****************************************Footer***************************************************************************/
+.footer {
+  background-color: #289ba7;
+  font-family: rockWell;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 150px 10px 150px;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 10px;
+  }
+
+  .footer h4 {
+    font-size: 10px;
+  }
+}
+
+.footer h4 {
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.social_media {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.social_media_logo {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+}
+
+/****************************************Projects***************************************************************************/
+
+.projects {
+  background: linear-gradient(
+    77.32deg,
+    #30d0e0 15.47%,
+    rgba(13, 157, 171, 0.86) 73.84%
+  );
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.card_projects {
+  background-color: #ffffff;
+  height: 320px;
+  width: 20%;
+  border-radius: 15px;
+  padding: 20px;
+  transition: 0.3s;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 40px;
+  font-family: rockWell;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+
+  .card_projects {
+    width: 80%;
+  }
+}
+
+.see_code_button {
+  font-family: rockWell;
+  width: 100px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  border-color: #ce34c0;
+  transition-duration: 0.4s;
+}
+
+.see_code_button:hover {
+  background-color: #ce34c0;
+  border-color: #ffffff;
+}
+
+.see_project_button {
+  font-family: rockWell;
+  width: 100px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  border-color: #3473ce;
+  transition-duration: 0.4s;
+}
+
+.see_project_button:hover {
+  background-color: #3473ce;
+  border-color: #ffffff;
 }

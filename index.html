@@ -14,35 +14,137 @@
 </head>
 
 <body>
+    <nav class="navbar">
+        <a href="#">Portfolio</a>
+        <a href="#" class="right">Contact</a>
+        <a href="#" class="right">Home</a>
+    </nav>
     <header class="header">
-        <nav class="navbar">
-            <a href="#" class="nav-logo">Portfolio</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <!-- <h1>Hey I'am ashish -->
+        <h1>
+            <!-- <h1>Hey , I’m Ashish</h1> -->
+            Hey I'm Ashish
+        </h1>
+        <p>
+            I am
+            <span class="txt-rotate" data-period="2000"
+                data-rotate='[ "a Web Developer", "a Sports Enthusiast", "an Anime Fan", "an Electronics Engineer"]'></span>
+        </p>
+
+
     </header>
+    <div class="card_section">
+        <div class="card first_card">
+            <img class="card_image" src="images/2919733.svg" alt="Techonology">
+            <div class="info">
+                <h5>Design</h5>
+                <p>I Like to design simple
+                    and thoughtful stuffs</p>
+            </div>
+            <div class="info">
+                <h5>Tools</h5>
+                <p>
+                    Figma <br>
+                    Pencil
+                </p>
+            </div>
+        </div>
+        <div class="card second_card">
+            <img class="card_image" src="images/4206326.svg" alt="Projects">
+            <div class="info">
+                <h5>Web Development</h5>
+                <p>I like to develop stuffs
+                    these are some of the
+                    projects that i have
+                    created</p>
+            </div>
+            <div class="buttons">
+                <input type=button onClick="parent.location='Projects.html'" value='See Projects'
+                    class="project_button">
+
+            </div>
+        </div>
+        <div class="card third_card">
+            <img class="card_image" src="images/2036963.svg" alt="Blogs">
+            <div class="info">
+                <h5>Blog</h5>
+                <p>Just started a blog,
+                    if you have time please
+                    check out my blog</p>
+            </div>
+            <div class="buttons">
+                <button class="project_button">See Blog</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h4>Follow Me On</h4>
+        <div class="social_media">
+            <img src="images/twitter_logo_1.svg" alt="twitter_logo" class="social_media_logo">
+            <img src="images/instagram_logo_1.svg" alt="insta_logo" class="social_media_logo">
+            <img src="images/linkdin_logo_1.svg" alt="linkdin_logo" class="social_media_logo">
+        </div>
+    </div>
 </body>
 <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
 
-    hamburger.addEventListener("click", mobileMenu);
+    var TxtRotate = function (el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
-    function mobileMenu() {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-    }
+    TxtRotate.prototype.tick = function () {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+        var that = this;
+        var delta = 300 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+        }
+
+        setTimeout(function () {
+            that.tick();
+        }, delta);
+    };
+
+    window.onload = function () {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+        document.body.appendChild(css);
+    };
+
 </script>
 
 </html>
